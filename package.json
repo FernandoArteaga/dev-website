@@ -19,9 +19,12 @@
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/rss": "^4.0.4",
     "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.3.1",
-    "astro-color-scheme": "^1.1.2",
     "astro-icon": "^1.0.4",
+    "autoprefixer": "^10.4.17",
+    "daisyui": "^4.6.1",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   }
 }

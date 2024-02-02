@@ -1,0 +1,14 @@
+---
+import { Icon } from "astro-icon/components";
+
+export type IconName = 'github' | 'lightbulb-off' | 'lightbulb-on' | 'linkedin' | 'mail'
+interface Props {
+  name: IconName
+  size?: number
+  className?: string
+}
+
+const { name, size = 32, class: className } = Astro.props;
+---
+
+<Icon name={name} width={size} height={size} class={className} />

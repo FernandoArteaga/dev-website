@@ -1,0 +1,21 @@
+---
+import { SITE_TITLE } from '$/consts';
+import HeaderLink from '$/components/HeaderLink.astro';
+import ThemeToggle from "$/components/ThemeToggle.astro";
+---
+
+<header class="px-4 py-0 shadow">
+	<nav class="flex flex-col text-lg sm:flex-row items-center sm:justify-between sm:h-16">
+		<div class="my-4">
+			<a href="/"><code>{SITE_TITLE}</code></a>
+		</div>
+		<div class="mb-4 sm:mb-0 space-x-4">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+		</div>
+		<div class="hidden sm:flex space-x-4">
+			<ThemeToggle />
+		</div>
+	</nav>
+</header>
