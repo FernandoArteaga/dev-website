@@ -1,0 +1,55 @@
+---
+import Icon from "$/components/Icon.astro";---
+
+<label id="astro-color-scheme-switch" class="swap">
+    <input type="checkbox"/>
+    <Icon class="swap-on fill-current" name="lightbulb-on" size="32" />
+    <Icon class="swap-off fill-current" name="lightbulb-off" size="32" />
+</label>
+
+<style>
+    :global(.dark) {
+        color-scheme: dark;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.getElementById("astro-color-scheme-switch");
+    const theme = localStorage.getItem("theme");
+    const themeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+    let systemTheme = themeMatcher.matches ? "dark" : "light";
+
+    themeMatcher.addEventListener("change", (event) => {
+        const theme = event.matches ? "dark" : "light";
+        systemTheme = theme;
+        if (localStorage.getItem("theme") === "system") {
+            updateAppliedTheme(theme);
+        }
+    });
+
+    function updateAppliedTheme(value) {
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(value);
+        document.documentElement.setAttribute("data-theme", value);
+    }
+
+    function updateTheme(value) {
+        const theme = value === "system" ? systemTheme : value;
+        updateAppliedTheme(theme);
+        localStorage.setItem("theme", value);
+    }
+    const currentTheme = theme || systemTheme;
+
+    const checkbox = themeSwitch.querySelector("input");
+    checkbox.value = currentTheme;
+    checkbox.checked = "light" == currentTheme;
+    updateTheme(currentTheme);
+
+    checkbox.addEventListener("change", (event) => {
+        const checkbox = event.target;
+        const settheme = checkbox.value === "dark" ? "light" : "dark";
+        checkbox.value = settheme;
+        updateTheme(settheme);
+    });
+
+</script>
