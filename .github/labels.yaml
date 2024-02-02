@@ -1,0 +1,26 @@
+configurations:
+  - changed-files:
+      - any-glob-to-any-file:
+        - 'astro.config.mjs'
+        - 'package.json'
+        - 'tsconfig.json'
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: '**/*.md'
+      - all-globs-to-all-files: '!src/content/blob/**/*'
+
+source:
+  - changed-files:
+      - any-glob-to-any-file:
+        - 'public/**/*'
+        - 'src/**/*'
+      - all-globs-to-all-files: '!src/content/blob/**/*'
+
+blog:
+  - changed-files:
+      - any-glob-to-any-file: 'src/content/blob/**/*'
+
+devops:
+  - changed-files:
+      - any-glob-to-any-file: '.github/**/*'
