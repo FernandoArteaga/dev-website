@@ -1,109 +1,71 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Nav.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import Layout from "$/layouts/Default.astro";
+import FormattedDate from '$/components/FormattedDate.astro';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => {
+		const dateA = a.data.updatedDate || a.data.pubDate
+		const dateB = b.data.updatedDate || b.data.pubDate
+		return dateB.valueOf() - dateA.valueOf()
+	}
 );
+
+const isRecent = (date: Date): boolean => {
+	const now = new Date();
+	const diff = now.valueOf() - date.valueOf();
+	const diffInDays = diff / (1000 * 60 * 60 * 24);
+	return diffInDays < 30;
+}
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
+<Layout>
+	<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+		{
+			posts.map((post) => (
+				<a href={ `/blog/${ post.slug }/` } class="flex justify-center">
+					<div class="card w-96 bg-base-100 hover:bg-base-200/50
+										  hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+					>
+						<figure><img src={ post.data.heroImage } alt="Blog picture"/></figure>
+						<div class="card-body">
+							<h2 class="card-title">
+								{ post.data.title }
+								{
+									isRecent(post.data.pubDate) && (
+										<span class="badge badge-primary capitalize">new</span>
+									)
+								}
+								{
+									post.data.updatedDate && isRecent(post.data.updatedDate) && (
+										<span class="badge badge-primary capitalize">updated</span>
+									)
+								}
+							</h2>
+							<FormattedDate date={ post.data.pubDate }/>
+							{
+								post.data.updatedDate && (
+									<p class="text-xs">Last update:
+										<FormattedDate date={ post.data.updatedDate }/>
 									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-	</body>
-</html>
+								)
+							}
+							{
+								post.data.topics.length > 0 && (
+									<div class="card-actions justify-end">
+										{
+											post.data.topics.map((topic) => (
+												<div class="badge badge-outline">{ topic }</div>
+											))
+										}
+									</div>
+								)
+							}
+						</div>
+					</div>
+				</a>
+			))
+		}
+	</section>
+</Layout>
+

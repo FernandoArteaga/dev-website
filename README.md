@@ -5,7 +5,6 @@
     </h1>
 </div>
 
-
 It is a personal website where I can share my projects, experiences and knowledge.
 
 This project was developed using [Astro](https://astro.build/) and hosted on GitHub Pages.

@@ -1,0 +1,19 @@
+---
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const blogName = subpath?.[1] || 'Article';
+
+function capitalizeAndSplit(input: string): string {
+  const words = input.split(/[_-]/)
+  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  return capitalizedWords.join(' ')
+}
+---
+
+<div class="text-sm breadcrumbs mb-4 pt-0">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li>{capitalizeAndSplit(blogName)}</li>
+    </ul>
+</div>
