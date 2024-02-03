@@ -25,22 +25,22 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-      - name: "Setup Node"
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: 'pnpm'
       - name: "Setup pnpm"
         uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: false
+      - name: "Setup Node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'pnpm'
       - name: "Get pnpm store directory"
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
       - name: "Setup pnpm cache"
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -54,7 +54,7 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: "Build with Astro"
         run: |
-          pnpx --no-install astro build \
+          pnpx astro build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
