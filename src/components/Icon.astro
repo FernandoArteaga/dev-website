@@ -4,8 +4,8 @@ import { Icon } from "astro-icon/components";
 export type IconName = 'github' | 'lightbulb-off' | 'lightbulb-on' | 'linkedin' | 'mail' | 'blog'
 interface Props {
   name: IconName
-  size?: number
-  className?: string
+  size?: string
+  class?: string
 }
 
 const { name, size = 32, class: className } = Astro.props;

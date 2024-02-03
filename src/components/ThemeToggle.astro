@@ -1,5 +1,6 @@
 ---
-import Icon from "$/components/Icon.astro";---
+import Icon from "$/components/Icon.astro"
+---
 
 <label id="astro-color-scheme-switch" class="swap">
     <input type="checkbox"/>
@@ -14,10 +15,10 @@ import Icon from "$/components/Icon.astro";---
 </style>
 
 <script>
-    const themeSwitch = document.getElementById("astro-color-scheme-switch");
-    const theme = localStorage.getItem("theme");
-    const themeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
-    let systemTheme = themeMatcher.matches ? "dark" : "light";
+    const themeSwitch = document.getElementById("astro-color-scheme-switch")
+    const theme = localStorage.getItem("theme")
+    const themeMatcher = window.matchMedia("(prefers-color-scheme: dark)")
+    let systemTheme = themeMatcher.matches ? "dark" : "light"
 
     themeMatcher.addEventListener("change", (event) => {
         const theme = event.matches ? "dark" : "light";
@@ -25,15 +26,15 @@ import Icon from "$/components/Icon.astro";---
         if (localStorage.getItem("theme") === "system") {
             updateAppliedTheme(theme);
         }
-    });
+    })
 
-    function updateAppliedTheme(value) {
+    function updateAppliedTheme(value: string) {
         document.documentElement.classList.remove("light", "dark");
         document.documentElement.classList.add(value);
         document.documentElement.setAttribute("data-theme", value);
     }
 
-    function updateTheme(value) {
+    function updateTheme(value: string)    {
         const theme = value === "system" ? systemTheme : value;
         updateAppliedTheme(theme);
         localStorage.setItem("theme", value);
@@ -46,10 +47,10 @@ import Icon from "$/components/Icon.astro";---
     updateTheme(currentTheme);
 
     checkbox.addEventListener("change", (event) => {
-        const checkbox = event.target;
-        const settheme = checkbox.value === "dark" ? "light" : "dark";
-        checkbox.value = settheme;
-        updateTheme(settheme);
-    });
+        const checkbox: EventTarget = event.target;
+        const setTheme = checkbox.value === "dark" ? "light" : "dark";
+        checkbox.value = setTheme;
+        updateTheme(setTheme);
+    })
 
 </script>
