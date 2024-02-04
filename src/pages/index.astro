@@ -4,7 +4,7 @@ import Icon from "$/components/Icon.astro";
 ---
 
 <Layout>
-	<h1 class="text-3xl mb-4">👋 Hi, thanks for stopping by!</h1>
+	<h1 class="text-3xl mb-4"><span class="wave wave-animation">👋</span> Hi, thanks for stopping by!</h1>
 	<section class="text-lg">
 		<p class="mb-2">
 			My name is Fernando Arteaga, I am a Sowtware Engineer passionate about his profession.
@@ -23,7 +23,7 @@ import Icon from "$/components/Icon.astro";
 	<section class="text-lg mt-8">
 		<h1 class="text-3xl mb-4">Connect</h1>
 		<div class="flex space-x-4">
-			<a href="mailto:fernandoarteaga.personal@gmail.com" target="_blank">
+			<a href="mailto:me@fernandoarteaga.dev" target="_blank">
 				<Icon name="mail" size="32" />
 			</a>
 			<a href="https://www.linkedin.com/in/fernando-arteaga-cespedes/" target="_blank">
@@ -35,3 +35,36 @@ import Icon from "$/components/Icon.astro";
 		</div>
 	</section>
 </Layout>
+
+<script>
+	const wave = document.getElementsByClassName('wave');
+	for (let element of wave) {
+		element.addEventListener('animationend', function(e) {
+			element.classList.remove('wave-animation');
+		});
+
+		element.addEventListener('mouseover', function(e) {
+			element.classList.add('wave-animation')
+		})
+	}
+</script>
+<style>
+	.wave-animation {
+		animation-name: wave-animation;
+		animation-duration: 2.5s;
+		animation-iteration-count: 1;
+		transform-origin: 70% 70%;
+		display: inline-block;
+	}
+
+	@keyframes wave-animation {
+		0% { transform: rotate( 0.0deg) }
+		10% { transform: rotate(14.0deg) }
+		20% { transform: rotate(-8.0deg) }
+		30% { transform: rotate(14.0deg) }
+		40% { transform: rotate(-4.0deg) }
+		50% { transform: rotate(10.0deg) }
+		60% { transform: rotate( 0.0deg) }
+		100% { transform: rotate( 0.0deg) }
+	}
+</style>

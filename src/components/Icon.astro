@@ -11,4 +11,4 @@ interface Props {
 const { name, size = 32, class: className } = Astro.props;
 ---
 
-<Icon name={name} width={size} height={size} class={className} />
+<Icon name={name} width={size} height={size} class:list={['hover:text-primary', className]} />
