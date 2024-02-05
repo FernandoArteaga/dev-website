@@ -22,13 +22,26 @@
   },
   "work": [
     {
+      "name": "Dimonoff",
+      "position": "Solution Architect",
+      "icon": "dimonoff",
+      "url": "https://www.dimonoff.com/",
+      "startDate": "July 2023",
+      "endDate": "",
+      "summary": "Led the RVE next-gen cloud project as a Solution Architect. Overseeing analysis, design, and implementation of a new IoT charger management platform. Guided the cloud development team in backend and frontend operations, emphasizing leadership in task planning, solution architecture, and automation of CI/CD pipelines to enhance project efficiency. Mentored the team to foster a collaborative work environment.",
+      "highlights": [
+        "Translate project needs into actionable tasks, and guarantee the development and delivery of features on time.",
+        "Provided strategic guidance alongside technical support to facilitate effective integration and utilization of platform features, ensuring clients successfully leveraged the application's capabilities."
+      ]
+    },
+    {
       "name": "Unity",
       "position": "DevOps Engineer",
       "icon": "unity",
       "url": "https://unity.com/",
       "startDate": "January 2023",
       "endDate": "January 2024",
-      "summary": "DevOps engineer at the Cloud Media Platform team, a core part of the Unity Cloud services.",
+      "summary": "As a DevOps Engineer on the Cloud Media Platform team, a core part of Unity Cloud services, I played a significant role in the collaborative effort to successfully launch the new Unity Cloud in a short 9-month timeframe.",
       "highlights": [
         "Migration of the whole Cloud infrastructure from GCP to Azure. Use Terraform for IaC. Setting up the infrastructure from scratch.",
         "Provide infrastructure support to different development teams.",
@@ -69,6 +82,26 @@
         "Responsible for production releases.",
         "Implementation of a private Identity provider like AWS IAM."
       ]
+    },
+    {
+      "name": "",
+      "position": "Freelancer",
+      "icon": "",
+      "url": "",
+      "startDate": "March 2016",
+      "endDate": "September 2018",
+      "summary": "Led the end-to-end process for designing, developing, and launching a web accounting management system tailored for gastronomic businesses and an online sales and classifieds system.",
+      "highlights": []
+    },
+    {
+      "name": "Gamma S.A.",
+      "position": "Software developer internship",
+      "icon": "",
+      "url": "",
+      "startDate": "March 2016",
+      "endDate": "January 2018",
+      "summary": "Revitalized and enhanced a business intelligence application through thoughtful design and development, focusing on improving the functionality and features of the existing system. Demonstrated expertise in refining and optimizing business intelligence solutions to meet evolving needs and standards.",
+      "highlights": []
     }
   ],
   "volunteer": [{
@@ -96,12 +129,26 @@
     "awarder": "",
     "summary": ""
   }],
-  "certificates": [{
-    "name": "Certificate",
-    "date": "2021-11-07",
-    "issuer": "Company",
-    "url": "https://certificate.com"
-  }],
+  "certificates": [
+    {
+      "name": "Kubernetes Certified Application Developer (CKAD) with Tests",
+      "date": "November 2021",
+      "issuer": "",
+      "url": "https://www.udemy.com/certificate/UC-03dc9280-330a-4b42-aa29-430f8d62c6ed/"
+    },
+    {
+      "name": "Kubernetes for the Absolute Beginners - Hands-on",
+      "date": "June 2021",
+      "issuer": "",
+      "url": "https://www.udemy.com/certificate/UC-ab8308f4-0520-4993-8a5c-8332c388b7ac/"
+    },
+    {
+      "name": "OTP-AWSD8: Building Containerized Applications on AWS",
+      "date": "April 2020",
+      "issuer": "",
+      "url": "https://courses.edx.org/certificates/6a69410214be4ba090c7cf0cc41cb4e1"
+    }
+  ],
   "publications": [{
     "name": "",
     "publisher": "",
@@ -179,14 +226,48 @@
     "name": "Jane Doe",
     "reference": "Reference…"
   }],
-  "projects": [{
-    "name": "Project",
-    "startDate": "2019-01-01",
-    "endDate": "2021-01-01",
-    "description": "Description...",
-    "highlights": [
-      "Won award at AIHacks 2016"
-    ],
-    "url": "https://project.com/"
-  }]
+  "projects": [
+    {
+      "name": "Doodo Shop",
+      "startDate": "",
+      "endDate": "",
+      "status":"active",
+      "description": "E-commerce web store.",
+      "highlights": [
+        "Firebase",
+        "Stripe",
+        "Sveltekit"
+      ],
+      "url": "https://doodo-dev.web.app",
+      "repository": ""
+    },
+    {
+      "name": "Housemaking",
+      "startDate": "",
+      "endDate": "",
+      "status": "archived",
+      "description": "Web application for household management.",
+      "highlights": [
+        "Firebase",
+        "Angular"
+      ],
+      "url": "",
+      "repository": "https://gitlab.com/groups/housemaking/-/archived"
+    },
+    {
+      "name": "Bookkeeper",
+      "startDate": "",
+      "endDate": "",
+      "status": "archived",
+      "description": "Web application for personal finances management.",
+      "highlights": [
+        "FastAPI",
+        "Angular",
+        "MongoDB",
+        "Elasticsearch"
+      ],
+      "url": "",
+      "repository": "https://gitlab.com/groups/my-bookkeeper/-/archived"
+    }
+  ]
 }

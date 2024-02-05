@@ -5,6 +5,7 @@ import Layout from '$/layouts/Default.astro';
 import Icon from "$/components/Icon.astro";
 
 const cv: CV = resume;
+
 ---
 
 <Layout>
@@ -14,7 +15,7 @@ const cv: CV = resume;
 			<div class="hero-content lg:items-start flex-col lg:flex-row-reverse">
 				<img
 					class="w-32 rounded-lg shadow-2xl"
-					alt="profile picture"
+					alt="profile-picture"
 					src="https://lh3.googleusercontent.com/a/ACg8ocKJil_BCMcCAcwi9BhXJVHmee5IuYV06dT1Hrqio1gmuMQ=s576-c-no"
 				/>
 				<div class="h-full flex flex-col justify-between">
@@ -64,14 +65,25 @@ const cv: CV = resume;
 				cv.work.map((work) => {
 					const endYear: string = work.endDate && work.endDate != "" ? work.endDate : "Current"
 					const iconName: string = work.icon && work.icon != "" ? work.icon : "briefcase";
+					const buildATag = (url: string, name: string) => {
+					  return url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name;
+					}
 					return(
 						<div class="mb-4">
 							<div class="flex flex-col xs:flex-row w-full justify-between mb-2">
 								<div class="flex space-x-2 hover:text-primary">
 									<Icon name={iconName} size="24" />
-									<h3 class="text-lg font-bold text-start">
-										{work.position} at <a class="link" href={work.url} target="_blank">{work.name}</a>
-									</h3>
+										{
+											work.name && work.name != "" ? (
+												<h3 class="text-lg font-bold text-start">
+													{work.position} at {buildATag(work.url, work.name)}
+												</h3>
+											) : (
+												<h3 class="text-lg font-bold text-start">
+													{work.position}
+												</h3>
+											)
+										}
 								</div>
 								<p class="text-sm">{ work.startDate } - { endYear }</p>
 							</div>
@@ -90,6 +102,18 @@ const cv: CV = resume;
 					)
 				})
 			}
+		</div>
+
+		<div class="py-4">
+			<h1 class="section-title">Certifications</h1>
+				{
+					cv.certificates.map((cert) => (
+						<div class="flex flex-col xs:flex-row w-full justify-between ">
+							<a class="text-start link" href={cert.url} target="_blank">{cert.name}</a>
+							<p class="text-sm">{cert.date}</p>
+						</div>
+					))
+				}
 		</div>
 
 		<div class="pt-4">
