@@ -1,0 +1,64 @@
+---
+import resume from '$resume';
+import { CV } from "$/cv";
+import Icon from "$/components/Icon.astro";
+import Layout from "../layouts/Default.astro";
+
+const cv: CV = resume;
+---
+
+<Layout>
+  <div class="mx-auto max-w-screen-sm md:max-w-screen-md xl:max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 justify-items-center gap-8">
+      {
+          cv.projects.map((project) => {
+              const buildATag = (url: string, name: string) => {
+                  return url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name;
+              }
+              const statusBadge = project.status == "active" ? (
+                <div class="badge badge-success badge-xs"></div>
+              ) : (
+                <div class="badge badge-error badge-xs"></div>
+              )
+              const repositoryIcon = (url: string) => {
+                  if (url && url != "") {
+                      const iconName = url.includes("github") ? "github" :
+                        url.includes("gitlab") ? "gitlab" : url.includes("bitbucket") ? "bitbucket" : "";
+                      return (
+                        iconName && iconName != "" && (
+                          <a href={url} target="_blank">
+                              <Icon name={iconName} size="20" />
+                          </a>
+                        )
+                      )
+                  }
+              }
+              <!--w-72 xs:w-80 lg:w-96-->
+              return (
+                <div class="card w-full xs:w-80
+                            bg-base-100 hover:bg-base-200/50 dark:bg-base-200 dark:hover:bg-base-200/50
+                            hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div class="card-body p-6">
+                        <div class="flex space-x-4 ">
+                            <h1 class="text-lg">
+                                {buildATag(project.url, project.name)}
+                            </h1>
+                            <div class="tooltip" data-tip={project.status}>
+                                {statusBadge}
+                            </div>
+                            {repositoryIcon(project.repository)}
+                        </div>
+                        <p>{project.description}</p>
+                        <div class="card-actions justify-end mt-2">
+                            {
+                                project.highlights.map((topic) => (
+                                  <div class="badge badge-outline hover:badge-outline hover:badge-primary cursor-default">{topic}</div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+              )
+          })
+      }
+  </div>
+</Layout>

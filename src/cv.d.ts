@@ -44,20 +44,18 @@ interface Work {
   position: string
   icon: string
   url: string
-  startDate: DateStr
-  endDate: DateStr | null
+  startDate: string
+  endDate: string | null
   summary: string
   highlights: Highlight
 }
-
-type DateStr = `${string}-${string}-${string}`
 
 interface Volunteer {
   organization: string
   position: string
   url: string
-  startDate: DateStr
-  endDate: DateStr
+  startDate: string
+  endDate: string
   summary: string
   highlights: Highlight
 }
@@ -77,7 +75,7 @@ interface Awards {
 
 interface Certificates {
   name: string,
-  date: DateStr,
+  date: string,
   issuer: string,
   url: string
 }
@@ -85,7 +83,7 @@ interface Certificates {
 interface Publications {
   name: string
   publisher: string
-  releaseDate: DateStr
+  releaseDate: string
   url: string
   summary: string
 }
@@ -95,8 +93,8 @@ interface Education {
   url: string
   area: string
   studyType: string
-  startDate: DateStr
-  endDate: DateStr
+  startDate: string
+  endDate: string
   score: string
   courses: Array<string>
 }
@@ -126,11 +124,11 @@ type Language =
 
 interface Projects {
   name: string
-  isActive: boolean
   description: string
+  status: "active" | "archived"
   highlights: Highlight
   url: string
-  github?: string
+  repository?: string
 }
 
 interface Interests {
