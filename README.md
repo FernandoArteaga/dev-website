@@ -18,3 +18,7 @@ This project was developed using [Astro](https://astro.build/) and hosted on Git
 The icons used in this project were taken from [iconify](https://icon-sets.iconify.design/).
 
 We're using the [Remix Icon](https://icon-sets.iconify.design/ri/) set.
+
+## Resume
+
+We'll use [jsonresume](https://jsonresume.org/) schema for building the resume.gthy

@@ -5,7 +5,7 @@ import Icon from "$/components/Icon.astro";
 
 <Layout>
 	<h1 class="text-3xl mb-4"><span class="wave wave-animation">👋</span> Hi, thanks for stopping by!</h1>
-	<section class="text-lg">
+	<section class="text-lg text-justify">
 		<p class="mb-2">
 			My name is Fernando Arteaga, I am a Sowtware Engineer passionate about his profession.
 		</p>
@@ -21,8 +21,8 @@ import Icon from "$/components/Icon.astro";
 		</p>
 	</section>
 	<section class="text-lg mt-8">
-		<h1 class="text-3xl mb-4">Connect</h1>
-		<div class="flex space-x-4">
+		<h1 class="text-3xl mb-4 text-center sm:text-left">Connect</h1>
+		<div class="flex space-x-4 justify-around px-8 sm:justify-start sm:p-0 w-full">
 			<a href="mailto:me@fernandoarteaga.dev" target="_blank">
 				<Icon name="mail" size="32" />
 			</a>
@@ -39,11 +39,11 @@ import Icon from "$/components/Icon.astro";
 <script>
 	const wave = document.getElementsByClassName('wave');
 	for (let element of wave) {
-		element.addEventListener('animationend', function(e) {
+		element.addEventListener('animationend', function(_e) {
 			element.classList.remove('wave-animation');
 		});
 
-		element.addEventListener('mouseover', function(e) {
+		element.addEventListener('mouseover', function(_e) {
 			element.classList.add('wave-animation')
 		})
 	}
