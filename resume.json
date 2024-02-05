@@ -1,0 +1,192 @@
+{
+  "basics": {
+    "name": "Fernando Arteaga",
+    "label": "Software Engineer - Passionate about technology - Team worker - Always available for a chat - Love sports, coffee, music and food",
+    "image": "https://lh3.googleusercontent.com/a/ACg8ocKJil_BCMcCAcwi9BhXJVHmee5IuYV06dT1Hrqio1gmuMQ=s576-c-no",
+    "email": "me@fernandoarteaga.dev",
+    "phone": "",
+    "url": "https://fernandoarteaga.dev",
+    "summary": "Software engineer specialized in cloud development. Experienced in Platform Engineering and DevOps, with strong foundations in Backend and Frontend development. Able to manage teams and take ownership of project management.\nStrong analytical and teamwork skills. Good communication skills and enjoys exchanging ideas. High learning ability and easily adapt to new technologies.\nCreative and innovative.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "",
+      "countryCode": "CA",
+      "region": "Quebec"
+    },
+    "profiles": [{
+      "network": "",
+      "username": "",
+      "url": ""
+    }]
+  },
+  "work": [
+    {
+      "name": "Unity",
+      "position": "DevOps Engineer",
+      "icon": "unity",
+      "url": "https://unity.com/",
+      "startDate": "January 2023",
+      "endDate": "January 2024",
+      "summary": "DevOps engineer at the Cloud Media Platform team, a core part of the Unity Cloud services.",
+      "highlights": [
+        "Migration of the whole Cloud infrastructure from GCP to Azure. Use Terraform for IaC. Setting up the infrastructure from scratch.",
+        "Provide infrastructure support to different development teams.",
+        "Manage Kubernetes clusters.",
+        "Monitoring services using Grafana and Prometheus.",
+        "Manage Helm charts.",
+        "Create and manage GitHub workflows to deploy internal and third-party services."
+      ]
+    },
+    {
+      "name": "Dimonoff",
+      "position": "Senior Full Stack Developer",
+      "icon": "dimonoff",
+      "url": "https://www.dimonoff.com/",
+      "startDate": "March 2021",
+      "endDate": "December 2022",
+      "summary": "At Dimonoff I worked on several projects, assuming different roles in each one. Demonstrating competencies as Solution Architect for the new generation of the RVE cloud solution, as DevOps specialist for the Mobility solution and as Lead Developer for Tero Plus.",
+      "highlights": [
+        "Analysis and design of new Cloud platforms. Requirements gathering.",
+        "Task planning (Spints).",
+        "Responsible for production releases.",
+        "Manage Kubernetes clusters.",
+        "Manage Helm charts.",
+        "Create and manage Bitbucket pipelines to deploy internal and third-party services."
+      ]
+    },
+    {
+      "name": "Axes Network",
+      "position": "Full Stack Developer",
+      "icon": "",
+      "url": "https://axes.ai/",
+      "startDate": "September 2018",
+      "endDate": "March 2021",
+      "summary": "At Axes, I took on critical roles in several projects, demonstrating my leadership and technical capabilities. As Lead Developer of the LID product, I managed the TiTo system for casinos, oversaw its operation and maintenance, and managed production releases. I also played a crucial role as Software Architect/Lead Developer for the Cashdesk product, where I led the design and architecture of a kiosk-style system, as well as the backend and frontend teams.",
+      "highlights": [
+        "Integration of cloud solutions to optimize transaction processing such as Kafka and RabbitMQ. As well as Elasticsearch to optimize the log system.",
+        "Development of a new ticket management service to replace the old one.",
+        "Responsible for production releases.",
+        "Implementation of a private Identity provider like AWS IAM."
+      ]
+    }
+  ],
+  "volunteer": [{
+    "organization": "",
+    "position": "",
+    "url": "",
+    "startDate": "",
+    "endDate": "",
+    "summary": "",
+    "highlights": []
+  }],
+  "education": [{
+    "institution": "Technological University Of Havana",
+    "url": "",
+    "area": "Software Engineer",
+    "studyType": "Bachelor",
+    "startDate": "2013",
+    "endDate": "2018",
+    "score": "",
+    "courses": []
+  }],
+  "awards": [{
+    "title": "",
+    "date": "",
+    "awarder": "",
+    "summary": ""
+  }],
+  "certificates": [{
+    "name": "Certificate",
+    "date": "2021-11-07",
+    "issuer": "Company",
+    "url": "https://certificate.com"
+  }],
+  "publications": [{
+    "name": "",
+    "publisher": "",
+    "releaseDate": "",
+    "url": "",
+    "summary": ""
+  }],
+  "skills": [
+    {
+      "name": "Programming languages",
+      "level": "",
+      "keywords": ["Python 3", "TypeScript", "Go"]
+    },
+    {
+      "name": "DevOps",
+      "level": "",
+      "keywords": [
+        "Kubernetes", "Helm", "Terraform", "Docker", "Skaffold", "GitHub workflows", "GitLab CI/CD", "Bitbucket pipelines",
+        "Grafana & Prometheus"
+      ]
+    },
+    {
+      "name": "Cloud",
+      "level": "",
+      "keywords": [
+        "GCP", "Google Firebase", "Microsoft Azure", "Digital Ocean", "AWS", "Amazon Amplify", "Elasticsearch",
+        "RabbitMQ", "Kafka", "Redpanda"
+      ]
+    },
+    {
+      "name": "Backend",
+      "level": "",
+      "keywords": [
+        "FastAPI", "Flask", "Gin", "Hapi", "Express", "Rest API", "Microservices", "Prisma ORM", "SQLAlchemy",
+        "Event-Driven", "Unit Test", "Integration Test"
+      ]
+    },
+    {
+      "name": "Frontend",
+      "level": "",
+      "keywords": [
+        "Angular", "Astro", "VueJS", "Nuxt", "Svelte", "Sveltekit", "NodeJS", "Tailwind", "Cypress"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "",
+      "keywords": [
+        "PostgreSQL", "MySQL (MariaDB)", "SQLite", "MongoDB", "Redis", "Memcached"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Full professional proficiency"
+    },
+    {
+      "language": "French",
+      "fluency": "Full professional proficiency"
+    }
+  ],
+  "interests": [{
+    "name": "Wildlife",
+    "keywords": [
+      "Ferrets",
+      "Unicorns"
+    ]
+  }],
+  "references": [{
+    "name": "Jane Doe",
+    "reference": "Reference…"
+  }],
+  "projects": [{
+    "name": "Project",
+    "startDate": "2019-01-01",
+    "endDate": "2021-01-01",
+    "description": "Description...",
+    "highlights": [
+      "Won award at AIHacks 2016"
+    ],
+    "url": "https://project.com/"
+  }]
+}

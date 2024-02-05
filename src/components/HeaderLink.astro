@@ -14,6 +14,6 @@ const tailwindClasses = isActive ?
 ---
 
 <a href={href}
-	 class:list={['inline-block', tailwindClasses]} {...props}>
+	 class:list={['inline-block, hover:text-primary', tailwindClasses]} {...props}>
 	<slot />
 </a>
