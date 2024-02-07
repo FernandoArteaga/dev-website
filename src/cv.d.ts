@@ -4,13 +4,13 @@ export interface CV {
   volunteer: Array<Volunteer>
   education: Array<Education>
   awards: Array<Awards>
-  certificates: Array<Certificates>
-  publications: Array<Publications>
-  skills: Array<Skills>
+  certificates: Array<Certificate>
+  publications: Array<Publication>
+  skills: Array<Skill>
   languages: Array<Languages>
   interests: Array<Interests>
   references: Array<References>
-  projects: Array<Projects>
+  projects: Array<Project>
 }
 
 interface Basics {
@@ -60,7 +60,7 @@ interface Volunteer {
   highlights: Highlight
 }
 
-interface Skills {
+interface Skill {
   name: string
   level: string
   keywords: Array<string>
@@ -73,14 +73,14 @@ interface Awards {
   summary: string
 }
 
-interface Certificates {
+interface Certificate {
   name: string,
   date: string,
   issuer: string,
   url: string
 }
 
-interface Publications {
+interface Publication {
   name: string
   publisher: string
   releaseDate: string
@@ -122,14 +122,16 @@ type Language =
   | "Bengali"
   | string
 
-interface Projects {
+interface Project {
   name: string
   description: string
-  status: "active" | "archived"
+  status: ProjectStatus
   highlights: Highlight
   url: string
   repository?: string
 }
+
+export type ProjectStatus = "active" | "archived"
 
 interface Interests {
   name: string

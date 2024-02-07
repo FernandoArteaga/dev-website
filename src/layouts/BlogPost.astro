@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Layout from "$/layouts/Default.astro";
-import FormattedDate from '../components/FormattedDate.astro';
-import BlogBreadcrumb from "../components/BlogBreadcrumb.astro";
+import FormattedDate from "$/components/FormattedDate.astro";
+import BlogBreadcrumb from "$/components/BlogBreadcrumb.astro";
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -20,20 +20,24 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</div>
 		<div class="py-4 m-auto text-lg">
 			<div class="px-4 text-center">
+				<h1 class="mb-2 text-2xl">{title}</h1>
+
 				<div class="mb-2 text-base">
 					<FormattedDate date={pubDate} />
 					{
 						updatedDate && (
-							<div class="italic">
-								Last updated on <FormattedDate date={updatedDate} />
-							</div>
+							<span class="italic">
+								(updated on <FormattedDate date={updatedDate} />)
+							</span>
 						)
 					}
 				</div>
-				<h1 class="mb-2 text-2xl">{title}</h1>
+				<p>{description}</p>
 			</div>
 			<div class="divider"></div>
-			<slot />
+			<div class="prose">
+				<slot />
+			</div>
 		</div>
 	</article>
 </Layout>

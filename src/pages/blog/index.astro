@@ -27,7 +27,9 @@ const isRecent = (date: Date): boolean => {
 					<div class="card w-96 bg-base-100 hover:bg-base-200/50 dark:bg-base-200 dark:hover:bg-base-200/50
 										  hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
 					>
-						<figure><img src={post.data.heroImage} alt="Blog picture"/></figure>
+						{
+							post.data.heroImage && <figure><img src={post.data.heroImage} alt="Blog picture"/></figure>
+						}
 						<div class="card-body">
 							<h2 class="card-title">
 								{ post.data.title }
@@ -42,14 +44,17 @@ const isRecent = (date: Date): boolean => {
 									)
 								}
 							</h2>
-							<FormattedDate date={post.data.pubDate}/>
-							{
-								post.data.updatedDate && (
-									<p class="text-xs">Last update:
-										<FormattedDate date={post.data.updatedDate}/>
-									</p>
-								)
-							}
+							<p class="text-sm">
+								<FormattedDate date={post.data.pubDate}/>
+								{
+									post.data.updatedDate && (
+										<span class="text-xs">
+											(updated on <FormattedDate date={post.data.updatedDate}/>)
+										</span>
+									)
+								}
+							</p>
+
 							{
 								post.data.topics.length > 0 && (
 									<div class="card-actions justify-end">
