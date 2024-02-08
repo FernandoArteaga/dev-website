@@ -4,6 +4,8 @@ description: "Let's compare Psycopg 3 and Asyncpg, two popular PostgreSQL librar
 pubDate: 'Feb 08 2024'
 topics: ['python', 'postgresql', 'asyncpg', 'psycopg3', 'fastapi']
 ---
+import ProjectCard from '$/components/ProjectCard.astro';
+import BlogImg from '$/components/BlogImg.astro';
 
 Nowadays, everyone talks about performance and how to make our applications faster, and one key factor is how we interact with our databases.
 Sometimes we get overwhelmed by small but important decisions, like choosing the right library to work with our database.
@@ -11,7 +13,7 @@ Asking ourselves questions like: _"Should I use an ORM or a query builder?"_, _"
 _"Is this one faster than the other one?"_.
 I know, it's a lot of questions, but don't worry, I'm here to help you with one of those questions.
 
-In the Python world, we have a lot of libraries to work with PostgreSQL, but two of the most popular are Psycopg 3 (Psycopg) and Asyncpg.
+In the Python world, we have a lot of libraries to work with PostgreSQL, but two of the most popular are Psycopg 3 and Asyncpg.
 In this article, we will compare these two libraries and see which one is better for your project.
 
 ## Setup
@@ -27,8 +29,6 @@ and [Asyncpg](https://magicstack.github.io/asyncpg/current/#) (v0.29.0).
 You can find the source code for this article in the [fernandoarteaga/fastapi-postgres-benchmark](https://github.com/FernandoArteaga/fastapi-postgres-benchmark) repository on GitHub.
 In case you want to run the benchmarks yourself, you can follow the instructions in the repository's README file.
 
-import ProjectCard from '$/components/ProjectCard.astro';
-
 <div class="flex justify-center">
   <ProjectCard project={{
       name: 'fastapi-postgres-benchmark',
@@ -43,7 +43,13 @@ import ProjectCard from '$/components/ProjectCard.astro';
 ## Benchmarks
 
 To evaluate the performance of the Psycopg 3 and Asyncpg libraries in handling various loads, we performed four different tests.
-Each test focused on reading a different number of rows, and comparing the performance between **Psycopg sync**, **Psycopg async** and **Asyncpg**.
+Each test focused on reading a different number of rows (50, 250, 100, 500), and comparing the performance between
+**Psycopg sync**, **Psycopg async** and **Asyncpg**.
+
+* [Test 1: Read **50** users from the DB](#test-1-read-50-users-from-the-db)
+* [Test 2: Read **250** users from the DB](#test-2-read-250-users-from-the-db)
+* [Test 3: Read **1000** users from the DB](#test-3-read-1000-users-from-the-db)
+* [Test 4: Read **5000** users from the DB](#test-4-read-5000-users-from-the-db)
 
 The tests were performed using the [wrk](https://github.com/wg/wrk?tab=readme-ov-file) tool, with the same number of
 requests, threads and duration for each test:
@@ -52,16 +58,13 @@ requests, threads and duration for each test:
 * Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
 * Duration: 2m
 
-### Read **50** users from the DB
+### Test 1: Read **50** users from the DB
 
-#### 🥉 psycopg sync connector
+#### 🥉psycopg sync connector
 
 Parameters:
 
 * Endpoint: `/psycopg/sync`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/sync`
 
 Results:
@@ -71,19 +74,16 @@ Results:
 | Latency      | 304.00ms | 247.62ms | 967.04ms | 76.47%    |
 | Req/Sec      | 80.18    | 74.86    | 333.00   | 76.60%    |
 
-- 93656 requests in 2.00m, 126.21MB read
+- 93656 requests in 2m, 126.21MB read
 - Socket errors: connect 158, read 112, write 0, timeout 0
 - Requests/sec: 779.80
 - Transfer/sec: 1.05MB
 
-#### 🥈 psycopg async connector
+#### 🥈psycopg async connector
 
 Parameters:
 
 * Endpoint: `/psycopg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/async`
 
 Results:
@@ -93,19 +93,16 @@ Results:
 | Latency      | 88.11ms | 8.72ms | 216.74ms | 90.14%    |
 | Req/Sec      | 225.99  | 83.09  | 484.00   | 69.62%    |
 
-- 324102 requests in 2.00m, 436.74MB read
+- 324102 requests in 2m, 436.74MB read
 - Socket errors: connect 158, read 106, write 0, timeout 0
 - Requests/sec: 2698.62
 - Transfer/sec: 3.64MB
 
-#### 🥇 asyncpg async connector
+#### 🥇asyncpg async connector
 
 Parameters:
 
 * Endpoint: `asyncpg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/asyncpg/async`
 
 Results:
@@ -115,21 +112,22 @@ Results:
 | Latency      | 74.26ms | 41.51ms | 612.29ms | 74.61%    |
 | Req/Sec      | 269.64  | 91.41   | 565.00   | 62.15%    |
 
-- 386681 requests in 2.00m, 521.07MB read
+- 386681 requests in 2m, 521.07MB read
 - Socket errors: connect 158, read 106, write 0, timeout 0
 - Requests/sec: 3219.51
 - Transfer/sec: 4.34MB
 
-### Read **250** users from the DB
+#### Results Summary
 
-#### 🥉 psycopg sync connector
+<BlogImg img="/blog/psycopg-vs-asyncpg/requests_sec_50.svg"  alt="requests_sec_50" />
+
+### Test 2: Read **250** users from the DB
+
+#### 🥉psycopg sync connector
 
 Parameters:
 
 * Endpoint: `/psycopg/sync`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/sync`
 
 Results:
@@ -139,19 +137,16 @@ Results:
 | Latency      | 748.75ms | 205.02ms | 1.04s  | 67.27%    |
 | Req/Sec      | 28.07    | 18.80    | 150.00 | 76.28%    |
 
-- 38006 requests in 2.00m, 236.68MB read
+- 38006 requests in 2m, 236.68MB read
 - Socket errors: connect 158, read 122, write 0, timeout 0
 - Requests/sec: 316.47
 - Transfer/sec: 1.97MB
 
-#### 🥈 psycopg async connector
+#### 🥈psycopg async connector
 
 Parameters:
 
 * Endpoint: `/psycopg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/async`
 
 Results:
@@ -161,19 +156,16 @@ Results:
 | Latency      | 163.90ms | 7.67ms | 279.98ms | 89.62%    |
 | Req/Sec      | 121.35   | 36.60  | 230.00   | 64.66%    |
 
-- 174168 requests in 2.00m, 1.06GB read
+- 174168 requests in 2m, 1.06GB read
 - Socket errors: connect 158, read 102, write 0, timeout 0
 - Requests/sec: 1450.35
 - Transfer/sec: 9.03MB
 
-#### 🥇 asyncpg async connector
+#### 🥇asyncpg async connector
 
 Parameters:
 
 * Endpoint: `asyncpg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/asyncpg/async`
 
 Results:
@@ -183,21 +175,22 @@ Results:
 | Latency      | 155.66ms | 88.66ms | 1.23s  | 74.67%    |
 | Req/Sec      | 128.67   | 59.72   | 333.00 | 65.48%    |
 
-- 184649 requests in 2.00m, 1.12GB read
+- 184649 requests in 2m, 1.12GB read
 - Socket errors: connect 158, read 106, write 0, timeout 0
 - Requests/sec: 1537.50
 - Transfer/sec: 9.57MB
 
-### Read **1000** users from the DB
+#### Results Summary
 
-#### 🥉 psycopg sync connector
+<BlogImg img="/blog/psycopg-vs-asyncpg/requests_sec_250.svg"  alt="requests_sec_250" />
+
+### Test 3: Read **1000** users from the DB
+
+#### 🥉psycopg sync connector
 
 Parameters:
 
 * Endpoint: `/psycopg/sync`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/sync`
 
 Results:
@@ -207,19 +200,16 @@ Results:
 | Latency      | 925.00ms | 73.91ms | 1.22s  | 72.15%    |
 | Req/Sec      | 28.07    | 18.80   | 150.00 | 76.28%    |
 
-- 30764 requests in 2.00m, 755.09MB read
+- 30764 requests in 2m, 755.09MB read
 - Socket errors: connect 158, read 124, write 0, timeout 0
 - Requests/sec: 256.15
 - Transfer/sec: 6.29MB
 
-#### 🥇 psycopg async connector
+#### 🥇psycopg async connector
 
 Parameters:
 
 * Endpoint: `/psycopg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/async`
 
 Results:
@@ -229,19 +219,16 @@ Results:
 | Latency      | 517.43ms | 35.68ms | 705.28ms | 74.58%    |
 | Req/Sec      | 46.16    | 33.04   | 161.00   | 60.40%    |
 
-- 55102 requests in 2.00m, 1.32GB read
+- 55102 requests in 2m, 1.32GB read
 - Socket errors: connect 158, read 98, write 0, timeout 0
 - Requests/sec: 458.79
 - Transfer/sec: 11.26MB
 
-#### 🥈 asyncpg async connector
+#### 🥈asyncpg async connector
 
 Parameters:
 
 * Endpoint: `asyncpg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/asyncpg/async`
 
 Results:
@@ -251,21 +238,22 @@ Results:
 | Latency      | 516.99ms | 277.76ms | 2.00s  | 73.42%    |
 | Req/Sec      | 39.04    | 21.50    | 150.00 | 75.20%    |
 
-- 55070 requests in 2.00m, 1.32GB read
+- 55070 requests in 2m, 1.32GB read
 - Socket errors: connect 158, read 103, write 0, timeout 27
 - Requests/sec: 458.63
 - Transfer/sec: 11.26MB
 
-### Read **5000** users from the DB
+#### Results Summary
 
-#### 🥉 psycopg sync connector
+<BlogImg img="/blog/psycopg-vs-asyncpg/requests_sec_1000.svg"  alt="requests_sec_1000" />
+
+### Test 4: Read **5000** users from the DB
+
+#### 🥉psycopg sync connector
 
 Parameters:
 
 * Endpoint: `/psycopg/sync`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/sync`
 
 Results:
@@ -275,19 +263,16 @@ Results:
 | Latency      | 1.05s | 534.39ms | 1.97s | 60.14%    |
 | Req/Sec      | 8.01  | 5.95     | 50.00 | 79.42%    |
 
-- 8716 requests in 2.00m, 1.04GB read
+- 8716 requests in 2m, 1.04GB read
 - Socket errors: connect 158, read 133, write 0, timeout 8578
 - Requests/sec: 72.57
 - Transfer/sec: 8.87MB
 
-#### 🥇 psycopg async connector
+#### 🥇psycopg async connector
 
 Parameters:
 
 * Endpoint: `/psycopg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/psycopg/async`
 
 Results:
@@ -297,19 +282,16 @@ Results:
 | Latency      | 1.08s | 575.88ms | 2.00s | 57.81%    |
 | Req/Sec      | 11.19 | 6.59     | 50.00 | 60.92%    |
 
-- 13263 requests in 2.00m, 1.58GB read
+- 13263 requests in 2m, 1.58GB read
 - Socket errors: 158, read 104, write 0, timeout 13026
 - Requests/sec: 110.44
 - Transfer/sec: 13.50MB
 
-#### 🥈 asyncpg async connector
+#### 🥈asyncpg async connector
 
 Parameters:
 
 * Endpoint: `asyncpg/async`
-* Threads: 12
-* Connections: 400 (total number of HTTP connections to keep open with each thread handling `N = connections/threads`)
-* Duration: 2m
 * CLI command: `wrk -t12 -c400 -d2m http://localhost:7755/asyncpg/async`
 
 Results:
@@ -319,17 +301,23 @@ Results:
 | Latency      | 212.79ms | 344.99ms | 1.95s | 91.28%    |
 | Req/Sec      | 11.42    | 8.74     | 80.00 | 82.07%    |
 
-- 11376 requests in 2.00m, 1.36GB read
+- 11376 requests in 2m, 1.36GB read
 - Socket errors: connect 158, read 109, write 0, timeout 9851
 - Requests/sec: 94.74
 - Transfer/sec: 11.58MB
 
+#### Results Summary
+
+<BlogImg img="/blog/psycopg-vs-asyncpg/requests_sec_5000.svg"  alt="requests_sec_5000" />
+
 ## Conclusions
 
-In this benchmark study, we sought to unravel the performance characteristics of two prominent Python libraries, Psycopg 3 and Asyncpg,
-when interacting with a PostgreSQL database in the context of a FastAPI application. Through a series of tests involving
-the retrieval of 50, 250, 1000, and 5000 rows from the database, we gained valuable insights into the behaviors of both
-synchronous and asynchronous connectors.
+In this benchmark study, we sought to unravel the performance characteristics of two prominent Python libraries,
+Psycopg 3 and Asyncpg, when interacting with a PostgreSQL database in the context of a FastAPI application.
+Through a series of tests involving the retrieval of 50, 250, 1000, and 5000 rows from the database, we gained valuable
+insights into the behaviors of both synchronous and asynchronous connectors.
+
+<BlogImg img="/blog/psycopg-vs-asyncpg/requests_sec.svg"  alt="requests_sec_summary" />
 
 #### Psycopg sync connector
 
