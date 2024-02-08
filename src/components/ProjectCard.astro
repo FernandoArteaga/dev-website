@@ -1,0 +1,57 @@
+---
+import Icon from "$/components/Icon.astro";
+import { Project } from "../cv";
+
+interface Props {
+  project: Project;
+}
+
+const { name, description, status, url, repository, highlights } = Astro.props.project;
+
+const iconName = (url: string) => {
+  if (url && url != "") {
+    return url.includes("github") ? "github" :
+      url.includes("gitlab") ? "gitlab" : url.includes("bitbucket") ? "bitbucket" : "";
+  }
+  return "";
+}
+const icon = iconName(repository);
+---
+
+<div class="card w-full xs:w-80
+            bg-base-100 hover:bg-base-200/50 dark:bg-base-200 dark:hover:bg-base-200/50
+            hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+  <div class="card-body p-6">
+    <div class="flex space-x-4 ">
+      <h1 class="text-lg">
+        {
+          url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name
+        }
+      </h1>
+      <div class="tooltip" data-tip={status}>
+        {
+          status == "active" ? (
+            <div class="badge badge-success badge-xs"></div>
+          ) : (
+            <div class="badge badge-error badge-xs"></div>
+          )
+        }
+      </div>
+      {
+        icon != "" && (
+          <a class="link" href={url} target="_blank">
+              <Icon name={icon} size="20" />
+          </a>
+        )
+      }
+    </div>
+    <p>{description}</p>
+    <div class="card-actions justify-end mt-2">
+      {
+        highlights.map((topic) => (
+          <div class="badge badge-outline hover:badge-outline hover:badge-primary cursor-default">{topic}</div>
+        ))
+      }
+    </div>
+  </div>
+</div>
