@@ -7,7 +7,7 @@
 
 It is a personal website where I can share my projects, experiences and knowledge.
 
-This project was developed using [Astro](https://astro.build/) and hosted on GitHub Pages.
+This project was developed using [Astro](https://astro.build/) and hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -29,7 +29,7 @@ pnpm run dev
 
 ## Deployment
 
-The website is hosted on [Cloudflare Pages](https://dash.cloudflare.com/fbc4b63da22e7f161b27748a5db22c93/pages/view/fernandoarteaga).
+The website is hosted on [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/).
 When a new commit is pushed to the `main` branch, the website is automatically deployed.
 
 ## Icons
