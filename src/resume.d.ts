@@ -125,13 +125,13 @@ type Language =
 interface Project {
   name: string
   description: string
-  status: ProjectStatus
+  status?: ProjectStatus
   highlights: Highlight
   url: string
   repository?: string
 }
 
-export type ProjectStatus = "active" | "archived"
+export type ProjectStatus = "archived"
 
 interface Interests {
   name: string
