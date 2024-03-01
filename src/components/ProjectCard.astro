@@ -28,19 +28,17 @@ const icon = iconName(repository);
           url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name
         }
       </h1>
-      <div class="tooltip" data-tip={status}>
-        {
-          status == "active" ? (
-            <div class="badge badge-success badge-xs"></div>
-          ) : (
+      {
+        status == "archived" && (
+          <div class="tooltip" data-tip={status}>
             <div class="badge badge-error badge-xs"></div>
-          )
-        }
-      </div>
+          </div>
+        )
+      }
       {
         icon != "" && (
           <a class="link" href={url} target="_blank">
-              <Icon name={icon} size="20" />
+            <Icon name={icon} size="20" />
           </a>
         )
       }

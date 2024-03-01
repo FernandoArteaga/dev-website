@@ -1,0 +1,39 @@
+---
+title: 'Kind: Kubernetes in Docker'
+description: "Discover how to run a Kubernetes cluster in Docker using Kind, a tool that allows you to create a Kubernetes cluster in seconds."
+pubDate: 'Mar 01 2024'
+topics: ['kubernetes', 'docker']
+---
+import ProjectCard from '$/components/ProjectCard.astro';
+
+When working with Kubernetes (k8s), it is always a good idea to have a local cluster to test and develop your applications.
+There are several tools to create a local k8s cluster, such as [Minikube](https://minikube.sigs.k8s.io/docs/), [K3s](https://k3s.io/), or [Kind](https://kind.sigs.k8s.io/).
+
+But we are going to focus on Kind, a tool that allows you to create a Kubernetes cluster in seconds.
+
+## What is Kind?
+
+Kind is a tool for running local Kubernetes clusters using Docker container "nodes". It was primarily designed for
+testing Kubernetes itself, but may be used for local development or CI.
+
+## Source code
+
+You can find the source code for this article in the [fernandoarteaga/learn-devops](https://github.com/FernandoArteaga/learn-devops) repository on GitHub.
+
+<div class="flex justify-center">
+  <ProjectCard project={{
+      name: 'learn-devops',
+      description: 'DevOps examples and hand-ons.',
+      highlights: ['devops', 'kubernetes', 'docker', 'helm', 'terraform', 'CI/CD'],
+      repository: 'https://github.com/FernandoArteaga/learn-devops'
+    }}
+  />
+</div>
+
+## Setup
+
+We'll be deploying a simple Astro application to our Kind cluster. Yep, that simple 😃!
+
+You can follow the instructions in the [fernandoarteaga/learn-devops](https://github.com/FernandoArteaga/learn-devops/blob/main/kubernetes/README.md) repository to deploy the application to your Kind cluster.
+
+The only thing you need to do before, is to install Kind on your local machine. You can find the installation instructions in the [official Kind documentation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
