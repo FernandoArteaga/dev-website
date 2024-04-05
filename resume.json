@@ -22,12 +22,27 @@
   },
   "work": [
     {
+      "name": "Telus Health",
+      "position": "Lead DevOps Engineer",
+      "icon": "telus",
+      "url": "https://www.telus.com/en/health",
+      "startDate": "March 2024",
+      "endDate": "",
+      "summary": "As a Lead DevOps Engineer, I am responsible for the design, implementation, and maintenance of the Telus Health's cloud infrastructure.",
+      "highlights": [
+        "Guide and mentor the DevOps team to ensure the successful delivery of functionalities.",
+        "Develop and execute strategic plans for the implementation and evolution of DevOps practices within the organization, aligning with business objectives.",
+        "Collaborate with development, operations, and QA teams to streamline processes, improve collaboration, and accelerate time to market for software delivery.",
+        "Spearhead the design and implementation of infrastructure automation and CI/CD pipelines for seamless software delivery using tools like Terraform, Flux CD and Circle CI. Architect cloud infrastructure on AWS to optimize scalability, reliability, and performance."
+      ]
+    },
+    {
       "name": "Dimonoff",
       "position": "Solution Architect",
       "icon": "dimonoff",
       "url": "https://www.dimonoff.com/",
       "startDate": "July 2023",
-      "endDate": "",
+      "endDate": "March 2024",
       "summary": "Led the RVE next-gen cloud project as a Solution Architect. Overseeing analysis, design, and implementation of a new IoT charger management platform. Guided the cloud development team in backend and frontend operations, emphasizing leadership in task planning, solution architecture, and automation of CI/CD pipelines to enhance project efficiency. Mentored the team to foster a collaborative work environment.",
       "highlights": [
         "Translate project needs into actionable tasks, and guarantee the development and delivery of features on time.",
@@ -160,7 +175,7 @@
     {
       "name": "Programming languages",
       "level": "",
-      "keywords": ["Python 3", "TypeScript", "Go"]
+      "keywords": ["Go", "Python 3", "TypeScript"]
     },
     {
       "name": "DevOps",
@@ -174,7 +189,7 @@
       "name": "Cloud",
       "level": "",
       "keywords": [
-        "GCP", "Google Firebase", "Microsoft Azure", "Digital Ocean", "AWS", "Amazon Amplify", "Elasticsearch",
+        "GCP", "AWS", "Azure", "Google Firebase", "Amazon Amplify", "Digital Ocean", "Elasticsearch",
         "RabbitMQ", "Kafka", "Redpanda"
       ]
     },
