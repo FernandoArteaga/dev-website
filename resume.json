@@ -23,17 +23,18 @@
   "work": [
     {
       "name": "Telus Health",
-      "position": "Lead DevOps Engineer",
+      "position": "Lead Platform Engineer",
       "icon": "telus",
       "url": "https://www.telus.com/en/health",
       "startDate": "March 2024",
       "endDate": "",
-      "summary": "As a Lead DevOps Engineer, I am responsible for the design, implementation, and maintenance of the Telus Health's cloud infrastructure.",
+      "summary": "Telus Health's MyCare Platform Lead Engineer",
       "highlights": [
         "Guide and mentor the DevOps team to ensure the successful delivery of functionalities.",
         "Develop and execute strategic plans for the implementation and evolution of DevOps practices within the organization, aligning with business objectives.",
         "Collaborate with development, operations, and QA teams to streamline processes, improve collaboration, and accelerate time to market for software delivery.",
-        "Spearhead the design and implementation of infrastructure automation and CI/CD pipelines for seamless software delivery using tools like Terraform, Flux CD and Circle CI. Architect cloud infrastructure on AWS to optimize scalability, reliability, and performance."
+        "Spearhead the design and implementation of infrastructure automation and CI/CD pipelines for seamless software delivery using tools like Terraform, Flux CD and Circle CI.",
+        "Architect cloud infrastructure on AWS to optimize scalability, reliability, and performance."
       ]
     },
     {
@@ -246,7 +247,7 @@
       "name": "Doodo Shop",
       "startDate": "",
       "endDate": "",
-      "status":"active",
+      "status":"archived",
       "description": "E-commerce web store.",
       "highlights": [
         "Firebase",
