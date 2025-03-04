@@ -244,8 +244,27 @@
   }],
   "projects": [
     {
+      "name": "The Easy Link",
+      "description": "Effortlessly save and access your copied links across all your devices.",
+      "highlights": [
+        "Firebase",
+        "Sveltekit"
+      ],
+      "url": "https://the-easy-link.web.app",
+      "repository": "https://github.com/FernandoArteaga/easy-link"
+    },
+    {
+      "name": "Dev Website",
+      "description": "Personal website for sharing my personal projects, experiences and knowledge.",
+      "highlights": [
+        "Astro"
+      ],
+      "url": "https://fernandoarteaga.dev",
+      "repository": "https://github.com/FernandoArteaga/dev-website"
+    },
+    {
       "name": "Doodo Shop",
-      "status":"archived",
+      "status": "archived",
       "description": "E-commerce web store.",
       "highlights": [
         "Firebase",
