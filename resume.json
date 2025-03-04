@@ -6,7 +6,7 @@
     "email": "me@fernandoarteaga.dev",
     "phone": "",
     "url": "https://fernandoarteaga.dev",
-    "summary": "Software engineer specialized in cloud development. Experienced in Platform Engineering and DevOps, with strong foundations in Backend and Frontend development. Able to manage teams and take ownership of project management.\nStrong analytical and teamwork skills. Good communication skills and enjoys exchanging ideas. High learning ability and easily adapt to new technologies.\nCreative and innovative.",
+    "summary": "Software engineer specialized in cloud development. Experienced in Platform Engineering and DevOps, with strong foundations in Backend and Frontend development. \nExperienced in team leadership and adept at guiding projects to success.\nStrong analytical and teamwork skills. Good communication skills and enjoys exchanging ideas. High learning ability and easily adapt to new technologies.\nCreative and innovative.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -22,13 +22,13 @@
   },
   "work": [
     {
-      "name": "Telus Health",
+      "name": "Telus",
       "position": "Lead Platform Engineer",
       "icon": "telus",
       "url": "https://www.telus.com/en/health",
       "startDate": "March 2024",
       "endDate": "",
-      "summary": "Telus Health's MyCare Platform Lead Engineer",
+      "summary": "Lead the Platform Engineering team in developing and maintaining the MyCare solution.",
       "highlights": [
         "Guide and mentor the DevOps team to ensure the successful delivery of functionalities.",
         "Develop and execute strategic plans for the implementation and evolution of DevOps practices within the organization, aligning with business objectives.",
@@ -245,8 +245,6 @@
   "projects": [
     {
       "name": "Doodo Shop",
-      "startDate": "",
-      "endDate": "",
       "status":"archived",
       "description": "E-commerce web store.",
       "highlights": [
@@ -259,8 +257,6 @@
     },
     {
       "name": "Housemaking",
-      "startDate": "",
-      "endDate": "",
       "status": "archived",
       "description": "Web application for household management.",
       "highlights": [
@@ -272,8 +268,6 @@
     },
     {
       "name": "Bookkeeper",
-      "startDate": "",
-      "endDate": "",
       "status": "archived",
       "description": "Web application for personal finances management.",
       "highlights": [
