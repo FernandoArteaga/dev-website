@@ -1,0 +1,59 @@
+---
+title: 'Why Corporate Terraform Modules Feel Rigid'
+description: 'How enforcing defaults and policies in corporate Terraform modules helps teams work safely and efficiently — and why rigidity is a feature.'
+pubDate: 'Jan 25 2026'
+topics: ['terraform', 'platform-engineering']
+heroImage: '/blog/corporate-terraform-modules/cover.png'
+---
+
+I have built Terraform modules in a few different ways. Early on, I tried to maximize flexibility. If a provider had an option, I exposed it. It felt useful at first, but it also made the module feel like a thin wrapper. I kept wondering what value it actually added.
+
+So I went the other direction and tried to handle every scenario. The logic grew quickly. It was fun to build, but it became harder to explain and harder to maintain. After a while, I realized many of those paths were either irrelevant or quietly deprecated. That was the moment I started to suspect I was solving the wrong problem.
+
+Corporate modules are not open-source modules with extra guardrails. They are a different design problem.
+
+## The Context Is the Design
+
+In a corporate environment, security standards, compliance rules, and organizational policies are not optional. At first, those constraints feel limiting. I certainly saw them that way. Over time, I learned they also act as a framework. They narrow the decision space and make the right choices easier to make consistently.
+
+An S3 bucket module is a good example. In a public module, you might let the user decide whether to enable encryption, versioning, access logging, or lifecycle policies. In a corporate module, those are usually defaults. You do not ask; you enforce. That is not about control for its own sake. It is about encoding decisions the organization has already made.
+
+Once I accepted that, the module became simpler and easier to use. Teams moved faster because they no longer had to revisit the same decisions every time.
+
+## Rigidity Removes Repeat Decisions
+
+This is the core reason corporate modules feel rigid. They encode decisions that should not be re-made every time infrastructure is created. That is the value.
+
+Too many options push policy decisions onto every team. That does not scale. Opinionated defaults reduce cognitive load. People can focus on the service they are building, not on remembering the right set of security toggles.
+
+This is not about being better. It is about being consistent.
+
+## Flexibility Exists, Just Differently
+
+The real tension is exceptions.
+
+For example, a policy might require 900 days of data retention when a team only needs 30. The answer is not a new `retention_days` variable, but a clear and explicit exception process.
+
+One pattern I have used is a bypass tag like `RULE_1234_BYPASS = "900 days is too much, the bucket data is not critical"`. That tag does not grant a free pass. It triggers review and leaves an audit trail. The module stays strict, and the exception stays visible.
+
+Environment is another form of controlled flexibility. In labs or dev environments, you may allow looser rules so teams can move fast. In production, you do not. Good modules make that boundary explicit.
+
+## Opinionated Inputs Make Life Easier
+
+Once the module encodes policy, the inputs change. You stop exposing every toggle and start asking for intent.
+
+A pattern I like is data classification. Instead of choosing encryption algorithms, lifecycle rules, and logging flags, the user sets `data_classification = "restricted"` or `"internal"`. The module applies the right policy bundle behind the scenes.
+
+That is easier for users and easier to maintain. It also makes the organization’s priorities visible in the interface. That feedback matters more than it seems.
+
+## You Are Encoding Institutional Memory
+
+Corporate modules are not just tools. They capture how the organization decided to operate. Teams change, people move on, and the module keeps the defaults safe. It is the opposite of tribal knowledge.
+
+I did not see this early on. I thought of modules as convenience. Over time, I started to see them as contracts. They carry policy, and they carry history. That is why they feel rigid. They are meant to.
+
+## Help People Understand the Why
+
+If you build these modules for other teams, you also own the explanation. People will ask why it feels hard to use. Clear documentation and examples are not optional. You are helping them understand that the constraints are protective, not punitive.
+
+The mindset shift is simple but real. You stop chasing every edge case and start asking, _"What decisions should never be repeated?"_ Once you do that, the rigidity stops being a surprise. It becomes the point.
