@@ -1,6 +1,6 @@
 ---
 import Icon from "$/components/Icon.astro";
-import { Project } from "../resume";
+import { Project } from "$/resume";
 
 interface Props {
   project: Project;
@@ -8,7 +8,7 @@ interface Props {
 
 const { name, description, status, url, repository, highlights } = Astro.props.project;
 
-const iconName = (url: string) => {
+const iconName = (url?: string) => {
   if (url && url != "") {
     return url.includes("github") ? "github" :
       url.includes("gitlab") ? "gitlab" : url.includes("bitbucket") ? "bitbucket" : "";

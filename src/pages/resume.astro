@@ -1,17 +1,18 @@
 ---
 import resume from '$resume';
-import { CV } from "../resume";
+import { CV } from "$/resume";
 import Layout from '$/layouts/Default.astro';
 import Icon from "$/components/Icon.astro";
+import ResumeSection from "$/components/ResumeSection.astro";
 
 const cv: CV = resume;
 
 ---
 
 <Layout>
-	<div class="max-w-prose mx-auto text-justify">
+	<div class="max-w-prose mx-auto text-justify space-y-6">
 
-		<div class="hero rounded-lg bg-base-200 text-center lg:text-left mb-4">
+		<div class="hero rounded-lg bg-base-200 text-center lg:text-left">
 			<div class="hero-content lg:items-start flex-col lg:flex-row-reverse">
 				<img
 					class="w-32 rounded-lg shadow-2xl"
@@ -25,31 +26,28 @@ const cv: CV = resume;
 			</div>
 		</div>
 
-		<div class="py-4">
-			<h1 class="section-title">About</h1>
+		<ResumeSection name="About">
 			<p class="whitespace-pre-line">{cv.basics.summary}</p>
-		</div>
+		</ResumeSection>
 
-		<div class="py-4">
-			<h1 class="section-title">Education</h1>
+		<ResumeSection name="Education">
 			{
 				cv.education.map((education) => {
 					const endYear: string = education.endDate && education.endDate != "" ? education.endDate : "Current"
-				return(
-					<div class="mb-4">
-						<div class="flex flex-col xs:flex-row w-full justify-between">
-							<h3 class="text-lg font-bold text-start">{education.institution}</h3>
-							<p class="text-sm">{education.startDate} - {endYear}</p>
+					return(
+						<div class="mb-4">
+							<div class="flex flex-col xs:flex-row w-full justify-between">
+								<h3 class="text-lg font-bold text-start">{education.institution}</h3>
+								<p class="text-sm">{education.startDate} - {endYear}</p>
+							</div>
+							<p>{education.studyType} in {education.area}</p>
 						</div>
-						<p>{education.studyType} in {education.area}</p>
-					</div>
-				)
+					)
 				})
 			}
-		</div>
+		</ResumeSection>
 
-		<div class="py-4">
-			<h1 class="section-title">Skills</h1>
+		<ResumeSection name="Skills">
 			<ul class="mb-4 ml-4 list-disc">
 				{
 					cv.skills.map((skill) => (
@@ -57,33 +55,32 @@ const cv: CV = resume;
 					))
 				}
 			</ul>
-		</div>
+		</ResumeSection>
 
-		<div class="py-4">
-			<h1 class="section-title">Work experience</h1>
+		<ResumeSection name="Work experience">
 			{
 				cv.work.map((work) => {
 					const endYear: string = work.endDate && work.endDate != "" ? work.endDate : "Current"
 					const iconName: string = work.icon && work.icon != "" ? work.icon : "briefcase";
 					const buildATag = (url: string, name: string) => {
-					  return url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name;
+						return url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name;
 					}
 					return(
 						<div class="mb-4">
 							<div class="flex flex-col xs:flex-row w-full justify-between mb-2">
 								<div class="flex space-x-2 hover:text-primary">
 									<Icon name={iconName} size="24" />
-										{
-											work.name && work.name != "" ? (
-												<h3 class="text-lg font-bold text-start">
-													{work.position} at {buildATag(work.url, work.name)}
-												</h3>
-											) : (
-												<h3 class="text-lg font-bold text-start">
-													{work.position}
-												</h3>
-											)
-										}
+									{
+										work.name && work.name != "" ? (
+											<h3 class="text-lg font-bold text-start">
+												{work.position} at {buildATag(work.url, work.name)}
+											</h3>
+										) : (
+											<h3 class="text-lg font-bold text-start">
+												{work.position}
+											</h3>
+										)
+									}
 								</div>
 								<p class="text-sm">{ work.startDate } - { endYear }</p>
 							</div>
@@ -102,22 +99,20 @@ const cv: CV = resume;
 					)
 				})
 			}
-		</div>
+		</ResumeSection>
 
-		<div class="py-4">
-			<h1 class="section-title">Certifications</h1>
-				{
-					cv.certificates.map((cert) => (
-						<div class="flex flex-col xs:flex-row w-full justify-between ">
-							<a class="text-start link" href={cert.url} target="_blank">{cert.name}</a>
-							<p class="text-sm">{cert.date}</p>
-						</div>
-					))
-				}
-		</div>
+		<ResumeSection name="Certifications">
+			{
+				cv.certificates.map((cert) => (
+					<div class="flex flex-col xs:flex-row w-full justify-between ">
+						<a class="text-start link" href={cert.url} target="_blank">{cert.name}</a>
+						<p class="text-sm">{cert.date}</p>
+					</div>
+				))
+			}
+		</ResumeSection>
 
-		<div class="pt-4">
-			<h1 class="section-title">Languages</h1>
+		<ResumeSection name="Languages">
 			<ul class="mb-4 ml-4 list-disc">
 				{
 					cv.languages.map((lang) => (
@@ -125,13 +120,6 @@ const cv: CV = resume;
 					))
 				}
 			</ul>
-		</div>
-
+		</ResumeSection>
 	</div>
 </Layout>
-
-<style>
-	.section-title {
-		@apply text-2xl mb-2;
-	}
-</style>

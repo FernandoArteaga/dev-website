@@ -8,7 +8,7 @@ const cv: CV = resume;
 ---
 
 <Layout>
-  <div class="mx-auto max-w-screen-sm md:max-w-screen-md xl:max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 justify-items-center gap-8">
+  <div class="mx-auto max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) xl:max-w-(--breakpoint-xl) grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 justify-items-center gap-8">
     {
       cv.projects.map((project) => (
         <ProjectCard project={project} />

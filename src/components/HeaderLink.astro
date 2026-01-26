@@ -9,7 +9,7 @@ const { pathname } = Astro.url;
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + subpath?.[0];
 const tailwindClasses = isActive ?
-	'font-bold underline decoration-primary decoration-4 underline-offset-[24px]' :
+	'font-bold underline decoration-primary decoration-4 underline-offset-24' :
 	'no-underline';
 ---
 
