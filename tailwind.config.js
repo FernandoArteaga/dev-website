@@ -9,26 +9,5 @@ export default {
       }
     },
   },
-  plugins: [
-    require('daisyui'),
-    require('@tailwindcss/typography'),
-  ],
-  daisyui: {
-    styled: true,
-    themes: [
-      {
-        light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          primary: "#e0ce58",
-        },
-      },
-      {
-        dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "#e0ce58",
-        },
-      },
-    ],
-  }
 }
 
