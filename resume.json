@@ -33,7 +33,7 @@
         "Guide and mentor the DevOps team to ensure the successful delivery of functionalities.",
         "Develop and execute strategic plans for the implementation and evolution of DevOps practices within the organization, aligning with business objectives.",
         "Collaborate with development, operations, and QA teams to streamline processes, improve collaboration, and accelerate time to market for software delivery.",
-        "Spearhead the design and implementation of infrastructure automation and CI/CD pipelines for seamless software delivery using tools like Terraform, Flux CD and Circle CI.",
+        "Spearhead the design and implementation of infrastructure automation and CI/CD pipelines for seamless software delivery using tools like Terraform, Flux CD and GitHub Actions.",
         "Architect cloud infrastructure on AWS to optimize scalability, reliability, and performance."
       ]
     },
@@ -87,7 +87,7 @@
     {
       "name": "Axes Network",
       "position": "Full Stack Developer",
-      "icon": "",
+      "icon": "briefcase",
       "url": "https://axes.ai/",
       "startDate": "September 2018",
       "endDate": "March 2021",
@@ -102,7 +102,7 @@
     {
       "name": "",
       "position": "Freelancer",
-      "icon": "",
+      "icon": "briefcase",
       "url": "",
       "startDate": "March 2016",
       "endDate": "September 2018",
@@ -112,7 +112,7 @@
     {
       "name": "Gamma S.A.",
       "position": "Software developer internship",
-      "icon": "",
+      "icon": "briefcase",
       "url": "",
       "startDate": "March 2016",
       "endDate": "January 2018",

@@ -15,7 +15,7 @@ import Icon from "$/components/Icon.astro"
 </style>
 
 <script>
-    const themeSwitch = document.getElementById("astro-color-scheme-switch")
+    const themeSwitch = document.getElementById("astro-color-scheme-switch") as HTMLElement
     const theme = localStorage.getItem("theme")
     const themeMatcher = window.matchMedia("(prefers-color-scheme: dark)")
     let systemTheme = themeMatcher.matches ? "dark" : "light"
@@ -40,16 +40,17 @@ import Icon from "$/components/Icon.astro"
         localStorage.setItem("theme", value);
     }
     const currentTheme = theme || systemTheme;
-
-    const checkbox = themeSwitch.querySelector("input");
-    checkbox.value = currentTheme;
-    checkbox.checked = "light" == currentTheme;
     updateTheme(currentTheme);
 
+    const checkbox = themeSwitch.querySelector("input") as HTMLInputElement;
+
+    checkbox.value = currentTheme;
+    checkbox.checked = "light" == currentTheme;
+
     checkbox.addEventListener("change", (event) => {
-        const checkbox: EventTarget = event.target;
-        const setTheme = checkbox.value === "dark" ? "light" : "dark";
-        checkbox.value = setTheme;
+        const target = event.target as HTMLInputElement;
+        const setTheme = target.value === "dark" ? "light" : "dark";
+        target.value = setTheme;
         updateTheme(setTheme);
     })
 
