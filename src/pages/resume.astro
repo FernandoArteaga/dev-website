@@ -1,9 +1,10 @@
 ---
 import resume from '$resume';
-import { CV } from "$/resume";
+import type { CV } from "$/types/resume";
 import Layout from '$/layouts/Default.astro';
 import Icon from "$/components/Icon.astro";
 import ResumeSection from "$/components/ResumeSection.astro";
+import type { IconName } from "$/types/app.ts";
 
 const cv: CV = resume;
 
@@ -61,7 +62,7 @@ const cv: CV = resume;
 			{
 				cv.work.map((work) => {
 					const endYear: string = work.endDate && work.endDate != "" ? work.endDate : "Current"
-					const iconName: string = work.icon && work.icon != "" ? work.icon : "briefcase";
+					const iconName: IconName = work.icon ? work.icon : "briefcase";
 					const buildATag = (url: string, name: string) => {
 						return url && url != "" ? <a class="link" href={url} target="_blank">{name}</a> : name;
 					}

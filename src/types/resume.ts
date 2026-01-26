@@ -1,3 +1,6 @@
+import type { IconName } from "$/types/app.ts";
+
+
 export interface CV {
   basics: Basics
   work: Array<Work>
@@ -42,7 +45,7 @@ interface Profiles {
 interface Work {
   name: string
   position: string
-  icon: string
+  icon: IconName
   url: string
   startDate: string
   endDate: string | null
@@ -122,7 +125,7 @@ type Language =
   | "Bengali"
   | string
 
-interface Project {
+export interface Project {
   name: string
   description: string
   status?: ProjectStatus

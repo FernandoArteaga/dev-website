@@ -1,8 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon as AstroIcon } from "astro-icon/components";
+import type { IconName } from "$/types/app.ts";
 
-export type IconName = ('github' | 'gitlab' | 'bitbucket' | 'lightbulb-off' | 'lightbulb-on' | 'linkedin' | 'mail' |
-  'blog' | 'briefcase' | 'dimonoff' | 'unity' | 'telus')
 interface Props {
   name: IconName
   size?: string
@@ -12,4 +11,4 @@ interface Props {
 const { name, size = 32, class: className } = Astro.props;
 ---
 
-<Icon name={name} width={size} height={size} class:list={['hover:text-primary', className]} />
+<AstroIcon name={name} width={size} height={size} class:list={['hover:text-primary', className]} />
