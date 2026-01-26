@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
+@theme {
+	--breakpoint-xs: 32rem;
+}
+
 @plugin "daisyui" {}
 @plugin "daisyui/theme" {
 	name: "light";
