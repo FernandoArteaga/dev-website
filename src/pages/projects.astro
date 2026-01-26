@@ -4,7 +4,7 @@ import resume from '$resume';
 import Layout from "$/layouts/Default.astro";
 import ProjectCard from "$/components/ProjectCard.astro";
 
-const cv: CV = resume;
+const cv = resume as CV;
 ---
 
 <Layout>
